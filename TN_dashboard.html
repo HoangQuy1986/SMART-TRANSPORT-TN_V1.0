@@ -907,6 +907,9 @@
                 <button class="nav-btn py-3 px-4 hover:bg-blue-600 whitespace-nowrap" data-tab="emblems">
                     <i class="fas fa-certificate mr-2"></i>Phù hiệu
                 </button>
+                <button class="nav-btn py-3 px-4 hover:bg-blue-600 whitespace-nowrap" data-tab="vehicles">
+                    <i class="fas fa-truck mr-2"></i>Phương tiện
+                </button>
                 <button class="nav-btn py-3 px-4 hover:bg-blue-600 whitespace-nowrap" data-tab="international">
                     <i class="fas fa-globe mr-2"></i>GP Liên vận QT
                 </button>
@@ -1303,6 +1306,137 @@
                                     <input type="number" id="emblemNamSXMin" placeholder="Từ năm"
                                         class="w-full px-3 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-amber-500 focus:border-amber-500 transition-all duration-200">
                                     <input type="number" id="emblemNamSXMax" placeholder="Đến năm"
+                                        class="w-full px-3 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-amber-500 focus:border-amber-500 transition-all duration-200">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Bộ lọc cho Phương tiện -->
+                    <div id="vehicleFilters" class="filter-section hidden">
+                        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4 mb-4">
+                            <div class="filter-group">
+                                <label class="block text-sm font-semibold text-gray-700 mb-2">
+                                    <i class="fas fa-search text-blue-500 mr-1"></i>
+                                    BIỂN SỐ / SỐ KHUNG / SỐ MÁY
+                                </label>
+                                <input type="text" id="vehiclePlateFilter"
+                                    placeholder="Nhập biển số, số khung hoặc số máy..."
+                                    class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-amber-500 focus:border-amber-500 transition-all duration-200">
+                            </div>
+                            <div class="filter-group">
+                                <label class="block text-sm font-semibold text-gray-700 mb-2">
+                                    <i class="fas fa-bus text-blue-500 mr-1"></i>
+                                    LOẠI PHƯƠNG TIỆN
+                                </label>
+                                <div class="relative">
+                                    <select id="vehicleTypeFilter"
+                                        class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-amber-500 focus:border-amber-500 transition-all duration-200 appearance-none">
+                                        <option value="">Tất cả</option>
+                                    </select>
+                                    <i
+                                        class="fas fa-chevron-down absolute right-3 top-4 text-gray-400 pointer-events-none"></i>
+                                </div>
+                            </div>
+                            <div class="filter-group">
+                                <label class="block text-sm font-semibold text-gray-700 mb-2">
+                                    <i class="fas fa-trademark text-indigo-500 mr-1"></i>
+                                    NHÃN HIỆU
+                                </label>
+                                <input type="text" id="vehicleNhanHieuFilter" placeholder="Nhập nhãn hiệu..."
+                                    class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-amber-500 focus:border-amber-500 transition-all duration-200">
+                            </div>
+                            <div class="filter-group">
+                                <label class="block text-sm font-semibold text-gray-700 mb-2">
+                                    <i class="fas fa-info-circle text-red-500 mr-1"></i>
+                                    ĐIỀU KIỆN CẤP PHÙ HIỆU
+                                </label>
+                                <div class="relative">
+                                    <select id="vehicleQualifiedFilter"
+                                        class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-amber-500 focus:border-amber-500 transition-all duration-200 appearance-none">
+                                        <option value="">Tất cả</option>
+                                        <option value="qualified">Đủ điều kiện</option>
+                                        <option value="not-qualified">Không đủ điều kiện</option>
+                                    </select>
+                                    <i
+                                        class="fas fa-chevron-down absolute right-3 top-4 text-gray-400 pointer-events-none"></i>
+                                </div>
+                            </div>
+                            <div class="filter-group">
+                                <label class="block text-sm font-semibold text-gray-700 mb-2">
+                                    <i class="fas fa-satellite-dish text-purple-500 mr-1"></i>
+                                    LẮP ĐẶT TBGSHT
+                                </label>
+                                <div class="relative">
+                                    <select id="vehicleGSHTFilter"
+                                        class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-amber-500 focus:border-amber-500 transition-all duration-200 appearance-none">
+                                        <option value="">Tất cả</option>
+                                        <option value="co">Có</option>
+                                        <option value="khong">Không</option>
+                                    </select>
+                                    <i
+                                        class="fas fa-chevron-down absolute right-3 top-4 text-gray-400 pointer-events-none"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4">
+                            <div class="filter-group">
+                                <label class="block text-sm font-semibold text-gray-700 mb-2">
+                                    <i class="fas fa-users text-green-500 mr-1"></i>
+                                    SỐ CHỖ (chỗ)
+                                </label>
+                                <div class="flex gap-2">
+                                    <input type="number" id="vehicleSoChoMin" placeholder="Từ"
+                                        class="w-full px-3 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-amber-500 focus:border-amber-500 transition-all duration-200">
+                                    <input type="number" id="vehicleSoChoMax" placeholder="Đến"
+                                        class="w-full px-3 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-amber-500 focus:border-amber-500 transition-all duration-200">
+                                </div>
+                            </div>
+                            <div class="filter-group">
+                                <label class="block text-sm font-semibold text-gray-700 mb-2">
+                                    <i class="fas fa-weight-hanging text-orange-500 mr-1"></i>
+                                    TẢI TRỌNG (kg)
+                                </label>
+                                <div class="flex gap-2">
+                                    <input type="number" id="vehicleTaiTrongMin" placeholder="Từ"
+                                        class="w-full px-3 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-amber-500 focus:border-amber-500 transition-all duration-200">
+                                    <input type="number" id="vehicleTaiTrongMax" placeholder="Đến"
+                                        class="w-full px-3 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-amber-500 focus:border-amber-500 transition-all duration-200">
+                                </div>
+                            </div>
+                            <div class="filter-group">
+                                <label class="block text-sm font-semibold text-gray-700 mb-2">
+                                    <i class="fas fa-bed text-purple-500 mr-1"></i>
+                                    SỐ GIƯỜNG (giường)
+                                </label>
+                                <div class="flex gap-2">
+                                    <input type="number" id="vehicleSoGiuongMin" placeholder="Từ"
+                                        class="w-full px-3 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-amber-500 focus:border-amber-500 transition-all duration-200">
+                                    <input type="number" id="vehicleSoGiuongMax" placeholder="Đến"
+                                        class="w-full px-3 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-amber-500 focus:border-amber-500 transition-all duration-200">
+                                </div>
+                            </div>
+                            <div class="filter-group">
+                                <label class="block text-sm font-semibold text-gray-700 mb-2">
+                                    <i class="fas fa-calendar-alt text-red-500 mr-1"></i>
+                                    NĂM SẢN XUẤT
+                                </label>
+                                <div class="flex gap-2">
+                                    <input type="number" id="vehicleNamSXMin" placeholder="Từ năm"
+                                        class="w-full px-3 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-amber-500 focus:border-amber-500 transition-all duration-200">
+                                    <input type="number" id="vehicleNamSXMax" placeholder="Đến năm"
+                                        class="w-full px-3 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-amber-500 focus:border-amber-500 transition-all duration-200">
+                                </div>
+                            </div>
+                            <div class="filter-group">
+                                <label class="block text-sm font-semibold text-gray-700 mb-2">
+                                    <i class="fas fa-calendar-times text-red-500 mr-1"></i>
+                                    HẠN ĐĂNG KIỂM
+                                </label>
+                                <div class="flex gap-2">
+                                    <input type="date" id="vehicleHanDKMin"
+                                        class="w-full px-3 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-amber-500 focus:border-amber-500 transition-all duration-200">
+                                    <input type="date" id="vehicleHanDKMax"
                                         class="w-full px-3 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-amber-500 focus:border-amber-500 transition-all duration-200">
                                 </div>
                             </div>
@@ -1728,6 +1862,69 @@
                                 <!-- Dữ liệu sẽ được load từ API -->
                             </tbody>
                         </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Vehicles Tab -->
+            <div id="vehicles" class="tab-content hidden">
+                <div class="bg-white rounded-lg shadow-md p-6">
+                    <h3 class="text-lg font-semibold mb-4">Tra cứu Phương tiện</h3>
+
+                    <!-- Vehicle Summary -->
+                    <div class="grid grid-cols-1 md:grid-cols-5 gap-4 mb-6">
+                        <div class="bg-blue-50 border-l-4 border-blue-500 p-4 rounded-lg">
+                            <div class="flex items-center justify-between">
+                                <h4 class="font-semibold text-blue-800">Tổng số xe</h4>
+                                <p class="text-2xl font-bold text-blue-600" id="vehiclesTotal">0</p>
+                            </div>
+                        </div>
+                        <div class="bg-green-50 border-l-4 border-green-500 p-4 rounded-lg">
+                            <div class="flex items-center justify-between">
+                                <h4 class="font-semibold text-green-800">Đủ điều kiện cấp PH</h4>
+                                <p class="text-2xl font-bold text-green-600" id="vehiclesQualified">0</p>
+                            </div>
+                        </div>
+                        <div class="bg-red-50 border-l-4 border-red-500 p-4 rounded-lg">
+                            <div class="flex items-center justify-between">
+                                <h4 class="font-semibold text-red-800">Không đủ điều kiện</h4>
+                                <p class="text-2xl font-bold text-red-600" id="vehiclesNotQualified">0</p>
+                            </div>
+                        </div>
+                        <div class="bg-orange-50 border-l-4 border-orange-500 p-4 rounded-lg">
+                            <div class="flex items-center justify-between">
+                                <h4 class="font-semibold text-orange-800">Chưa có phù hiệu</h4>
+                                <p class="text-2xl font-bold text-orange-600" id="vehiclesNoEmblem">0</p>
+                            </div>
+                        </div>
+                        <div class="bg-purple-50 border-l-4 border-purple-500 p-4 rounded-lg">
+                            <div class="flex items-center justify-between">
+                                <h4 class="font-semibold text-purple-800">Có lắp TBGSHT</h4>
+                                <p class="text-2xl font-bold text-purple-600" id="vehiclesGSHT">0</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Vehicle Details Table -->
+                    <div class="overflow-x-auto mt-6">
+                        <table class="w-full text-sm">
+                            <thead class="bg-gray-50">
+                                <tr>
+                                    <th class="px-4 py-2 text-left">Biển số xe</th>
+                                    <th class="px-4 py-2 text-left">Loại phương tiện</th>
+                                    <th class="px-4 py-2 text-left">Nhãn hiệu</th>
+                                    <th class="px-4 py-2 text-center">Số chỗ/giường</th>
+                                    <th class="px-4 py-2 text-center">Năm SX</th>
+                                    <th class="px-4 py-2 text-center">Hạn đăng kiểm</th>
+                                    <th class="px-4 py-2 text-center">Trạng thái</th>
+                                    <th class="px-4 py-2 text-center">Thao tác</th>
+                                </tr>
+                            </thead>
+                            <tbody id="vehiclesTableBody">
+                                <!-- Dữ liệu sẽ được load từ API -->
+                            </tbody>
+                        </table>
+                        <p class="text-xs text-gray-400 mt-2">Hiển thị tối đa 50 kết quả đầu tiên. Dùng bộ lọc để thu hẹp kết quả.</p>
                     </div>
                 </div>
             </div>
@@ -2261,6 +2458,7 @@
         let filteredFixedRoutesData = [];
         let filteredBusRoutesData = [];
         let filteredRegistrationCentersData = [];
+        let filteredVehicleData = []; // Dữ liệu bảng Xe sau khi lọc (tab Phương tiện)
         let chartInstances = {};
 
         // CHỨC NĂNG XUẤT EXCEL MỚI - SỬ DỤNG SHEETJS
@@ -2279,6 +2477,7 @@
                 'international-books': 'So_lien_van',
                 'bus-stations': 'Ben_xe',
                 'registration-centers': 'Trung_tam_DK',
+                'vehicles': 'Phuong_tien',
                 'statistics': 'Thong_ke',
                 'reports': 'Bao_cao'
             };
@@ -2326,6 +2525,9 @@
                             break;
                         case 'registration-centers':
                             workbook = exportRegistrationCentersDataSheetJS();
+                            break;
+                        case 'vehicles':
+                            workbook = exportVehiclesDataSheetJS();
                             break;
                         default:
                             throw new Error('Tab không được hỗ trợ');
@@ -2542,6 +2744,79 @@
             const sheet = createRegistrationCenterSheet();
             XLSX.utils.book_append_sheet(workbook, sheet, 'Trung tâm ĐK');
             return workbook;
+        }
+
+        // Xuất dữ liệu Phương tiện với SheetJS
+        function exportVehiclesDataSheetJS() {
+            const workbook = XLSX.utils.book_new();
+            const sheet = createVehicleSheet();
+            XLSX.utils.book_append_sheet(workbook, sheet, 'Phương tiện');
+            return workbook;
+        }
+
+        function createVehicleSheet() {
+            const headers = [
+                'STT', 'Biển số xe', 'Loại phương tiện', 'Nhãn hiệu', 'Màu sơn',
+                'Số khung', 'Số máy', 'Số chỗ', 'Số giường', 'Tải trọng',
+                'Năm sản xuất', 'Niên hạn sử dụng', 'Hạn đăng kiểm', 'Đăng ký KDVT',
+                'Lắp đặt TBGSHT', 'Trạng thái', 'Ghi chú'
+            ];
+
+            const data = [
+                ['DANH SÁCH PHƯƠNG TIỆN'],
+                [`Ngày xuất: ${new Date().toLocaleString('vi-VN')}`],
+                [`Tổng số: ${filteredVehicleData.length} xe`],
+                [],
+                headers
+            ];
+
+            filteredVehicleData.forEach((vehicle, index) => {
+                const qualified = isVehicleQualified(vehicle);
+                data.push([
+                    index + 1,
+                    vehicle.BienSo || '',
+                    vehicle.LoaiPhuongTien || '',
+                    vehicle.NhanHieu || '',
+                    vehicle.MauSon || '',
+                    vehicle.SoKhung || '',
+                    vehicle.SoMay || '',
+                    vehicle.SoCho || '',
+                    vehicle.SoGiuong || '',
+                    vehicle.TaiTrong || '',
+                    vehicle.NamSanXuat || '',
+                    vehicle.NienHan || '',
+                    formatDate(vehicle[VEHICLE_HANDANGKIEM_FIELD]),
+                    vehicle.CoKDVT || '',
+                    vehicle['Lắp đặt TBGSHT'] || '',
+                    qualified ? 'Đủ điều kiện' : 'Không đủ điều kiện',
+                    vehicle[VEHICLE_QUALIFY_NOTE_FIELD] || ''
+                ]);
+            });
+
+            const worksheet = XLSX.utils.aoa_to_sheet(data);
+
+            const colWidths = [
+                { wch: 5 },   // STT
+                { wch: 15 },  // Biển số xe
+                { wch: 20 },  // Loại phương tiện
+                { wch: 15 },  // Nhãn hiệu
+                { wch: 12 },  // Màu sơn
+                { wch: 22 },  // Số khung
+                { wch: 15 },  // Số máy
+                { wch: 10 },  // Số chỗ
+                { wch: 10 },  // Số giường
+                { wch: 10 },  // Tải trọng
+                { wch: 12 },  // Năm sản xuất
+                { wch: 12 },  // Niên hạn sử dụng
+                { wch: 14 },  // Hạn đăng kiểm
+                { wch: 12 },  // Đăng ký KDVT
+                { wch: 14 },  // Lắp đặt TBGSHT
+                { wch: 16 },  // Trạng thái
+                { wch: 40 }   // Ghi chú
+            ];
+            worksheet['!cols'] = colWidths;
+
+            return worksheet;
         }
 
         // Bổ sung hàm createLicenseSheet và createEmblemSheet nếu chưa có
@@ -4122,6 +4397,7 @@
                 });
                 if (Array.isArray(response)) {
                     vehicleData = response;
+                    filteredVehicleData = [...vehicleData];
                     console.log('Dữ liệu xe:', vehicleData);
                 } else {
                     throw new Error('Dữ liệu không hợp lệ');
@@ -4307,6 +4583,7 @@
             let tempBusStations = filterByDateRange(originalBusStationsData, startDate, endDate, 'NgayQDCBBen');
             let tempFixedRoutes = [...originalFixedRoutesData];
             let tempBusRoutes = [...originalBusRoutesData];
+            let tempVehicles = [...vehicleData];
 
             // Bước 2: Lọc theo khu vực với cả 2 loại xã phường - CẬP NHẬT
             if (selectedQuanHuyen || selectedXaPhuong || selectedXaPhuongSauSapNhap) {
@@ -4340,6 +4617,9 @@
                     case 'bus-stations':                                              // THÊM
                         tempBusStations = applyBusStationSpecificFilters(tempBusStations); // THÊM
                         break;
+                    case 'vehicles':
+                        tempVehicles = applyVehicleSpecificFilters(tempVehicles);
+                        break;
                 }
             }
 
@@ -4352,6 +4632,7 @@
             filteredBusStationsData = tempBusStations;     // THÊM
             filteredFixedRoutesData = tempFixedRoutes;     // THÊM
             filteredBusRoutesData = tempBusRoutes;         // THÊM
+            filteredVehicleData = tempVehicles;
 
             // Bước 5: Cập nhật toàn bộ UI
             updateAllUI();
@@ -4642,6 +4923,263 @@
                 return true;
             });
         }
+
+        // ==================== TAB PHƯƠNG TIỆN (bảng Xe) ====================
+
+        const VEHICLE_QUALIFY_NOTE_FIELD = 'Note: Xe không đủ điều kiện cấp phù hiệu KDVT';
+        const VEHICLE_HANDANGKIEM_FIELD = 'Hạn đăng kiểm';
+        const VEHICLE_RELATED_EMBLEMS_FIELD = 'Related PHUHIEUXEs';
+
+        // Xe đủ điều kiện cấp phù hiệu khi cột ghi chú (do AppSheet tự tính) rỗng
+        function isVehicleQualified(vehicle) {
+            return !((vehicle[VEHICLE_QUALIFY_NOTE_FIELD] || '').trim());
+        }
+
+        // Lấy danh sách ID phù hiệu liên quan tới 1 xe (cột Related PHUHIEUXEs có thể là 1 ID hoặc nhiều ID cách nhau bởi dấu phẩy)
+        function getVehicleEmblemIds(vehicle) {
+            const raw = vehicle[VEHICLE_RELATED_EMBLEMS_FIELD];
+            if (!raw) return [];
+            if (Array.isArray(raw)) return raw.filter(Boolean);
+            return raw.split(',').map(s => s.trim()).filter(Boolean);
+        }
+
+        function getVehicleEmblems(vehicle) {
+            const ids = getVehicleEmblemIds(vehicle);
+            if (!ids.length) return [];
+            return originalEmblemsData.filter(e => ids.includes(e.ID_PhuHieu));
+        }
+
+        // Áp dụng bộ lọc chi tiết cho Phương tiện
+        function applyVehicleSpecificFilters(data) {
+            const plateFilter = document.getElementById('vehiclePlateFilter').value.toLowerCase();
+            const typeFilter = document.getElementById('vehicleTypeFilter').value;
+            const nhanHieuFilter = document.getElementById('vehicleNhanHieuFilter').value.toLowerCase();
+            const qualifiedFilter = document.getElementById('vehicleQualifiedFilter').value;
+            const gshtFilter = document.getElementById('vehicleGSHTFilter').value;
+
+            const soChoMin = document.getElementById('vehicleSoChoMin').value;
+            const soChoMax = document.getElementById('vehicleSoChoMax').value;
+            const taiTrongMin = document.getElementById('vehicleTaiTrongMin').value;
+            const taiTrongMax = document.getElementById('vehicleTaiTrongMax').value;
+            const soGiuongMin = document.getElementById('vehicleSoGiuongMin').value;
+            const soGiuongMax = document.getElementById('vehicleSoGiuongMax').value;
+            const namSXMin = document.getElementById('vehicleNamSXMin').value;
+            const namSXMax = document.getElementById('vehicleNamSXMax').value;
+            const hanDKMin = document.getElementById('vehicleHanDKMin').value;
+            const hanDKMax = document.getElementById('vehicleHanDKMax').value;
+
+            return data.filter(vehicle => {
+                if (plateFilter) {
+                    const normalizedFilter = removeVietnameseAccents(plateFilter);
+                    const normalizedPlate = removeVietnameseAccents(vehicle.BienSo || '');
+                    const normalizedKhung = removeVietnameseAccents(vehicle.SoKhung || '');
+                    const normalizedMay = removeVietnameseAccents(vehicle.SoMay || '');
+                    if (!normalizedPlate.includes(normalizedFilter) &&
+                        !normalizedKhung.includes(normalizedFilter) &&
+                        !normalizedMay.includes(normalizedFilter)) {
+                        return false;
+                    }
+                }
+
+                if (typeFilter && vehicle.LoaiPhuongTien !== typeFilter) {
+                    return false;
+                }
+
+                if (nhanHieuFilter) {
+                    const normalizedFilter = removeVietnameseAccents(nhanHieuFilter);
+                    const normalizedBrand = removeVietnameseAccents((vehicle.NhanHieu || '').toLowerCase());
+                    if (!normalizedBrand.includes(normalizedFilter)) return false;
+                }
+
+                if (qualifiedFilter) {
+                    const qualified = isVehicleQualified(vehicle);
+                    if (qualifiedFilter === 'qualified' && !qualified) return false;
+                    if (qualifiedFilter === 'not-qualified' && qualified) return false;
+                }
+
+                if (gshtFilter) {
+                    const hasGSHT = (vehicle['Lắp đặt TBGSHT'] || '').trim() === 'Có';
+                    if (gshtFilter === 'co' && !hasGSHT) return false;
+                    if (gshtFilter === 'khong' && hasGSHT) return false;
+                }
+
+                const socho = parseFloat(vehicle.SoCho) || 0;
+                if (soChoMin && socho < parseFloat(soChoMin)) return false;
+                if (soChoMax && socho > parseFloat(soChoMax)) return false;
+
+                const taitrong = parseFloat(vehicle.TaiTrong) || 0;
+                if (taiTrongMin && taitrong < parseFloat(taiTrongMin)) return false;
+                if (taiTrongMax && taitrong > parseFloat(taiTrongMax)) return false;
+
+                const sogiuong = parseFloat(vehicle.SoGiuong) || 0;
+                if (soGiuongMin && sogiuong < parseFloat(soGiuongMin)) return false;
+                if (soGiuongMax && sogiuong > parseFloat(soGiuongMax)) return false;
+
+                const namsx = parseInt(vehicle.NamSanXuat) || 0;
+                if (namSXMin && namsx < parseInt(namSXMin)) return false;
+                if (namSXMax && namsx > parseInt(namSXMax)) return false;
+
+                if (hanDKMin || hanDKMax) {
+                    const hanDK = parseAppSheetDate(vehicle[VEHICLE_HANDANGKIEM_FIELD]);
+                    if (!hanDK) return false;
+                    if (hanDKMin && hanDK < new Date(hanDKMin + 'T00:00:00')) return false;
+                    if (hanDKMax && hanDK > new Date(hanDKMax + 'T23:59:59')) return false;
+                }
+
+                return true;
+            });
+        }
+
+        function populateVehicleFilters() {
+            if (!vehicleData.length) return;
+
+            const typeFilter = document.getElementById('vehicleTypeFilter');
+            const types = [...new Set(vehicleData.map(item => item.LoaiPhuongTien).filter(Boolean))];
+
+            while (typeFilter.children.length > 1) {
+                typeFilter.removeChild(typeFilter.lastChild);
+            }
+
+            types.sort().forEach(type => {
+                const option = document.createElement('option');
+                option.value = type;
+                option.textContent = type;
+                typeFilter.appendChild(option);
+            });
+        }
+
+        function updateVehiclesUI() {
+            const total = filteredVehicleData.length;
+            const qualified = filteredVehicleData.filter(isVehicleQualified).length;
+            const notQualified = total - qualified;
+            const noEmblem = filteredVehicleData.filter(v => getVehicleEmblemIds(v).length === 0).length;
+            const withGSHT = filteredVehicleData.filter(v => (v['Lắp đặt TBGSHT'] || '').trim() === 'Có').length;
+
+            document.getElementById('vehiclesTotal').textContent = total;
+            document.getElementById('vehiclesQualified').textContent = qualified;
+            document.getElementById('vehiclesNotQualified').textContent = notQualified;
+            document.getElementById('vehiclesNoEmblem').textContent = noEmblem;
+            document.getElementById('vehiclesGSHT').textContent = withGSHT;
+
+            updateVehicleTable();
+        }
+
+        function updateVehicleTable() {
+            const tableBody = document.getElementById('vehiclesTableBody');
+            if (!tableBody) return;
+
+            tableBody.innerHTML = '';
+
+            filteredVehicleData.slice(0, 50).forEach(vehicle => {
+                const row = document.createElement('tr');
+                row.className = 'border-b hover:bg-gray-50';
+
+                const qualified = isVehicleQualified(vehicle);
+                const statusClass = qualified ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800';
+                const statusText = qualified ? 'Đủ điều kiện' : 'Không đủ điều kiện';
+
+                const soChoGiuong = [vehicle.SoCho, vehicle.SoGiuong].filter(Boolean).join(' / ');
+
+                row.innerHTML = `
+            <td class="px-4 py-2 font-medium">${vehicle.BienSo || ''}</td>
+            <td class="px-4 py-2">${vehicle.LoaiPhuongTien || ''}</td>
+            <td class="px-4 py-2">${vehicle.NhanHieu || ''}</td>
+            <td class="px-4 py-2 text-center">${soChoGiuong}</td>
+            <td class="px-4 py-2 text-center">${vehicle.NamSanXuat || ''}</td>
+            <td class="px-4 py-2 text-center">${formatDate(vehicle[VEHICLE_HANDANGKIEM_FIELD])}</td>
+            <td class="px-4 py-2 text-center">
+                <span class="px-2 py-1 text-xs rounded-full ${statusClass}">
+                    ${statusText}
+                </span>
+            </td>
+            <td class="px-4 py-2 text-center">
+                <button class="text-blue-600 hover:text-blue-800" onclick="viewVehicleDetail('${vehicle.IDXe}')">
+                    Chi tiết
+                </button>
+            </td>
+        `;
+                tableBody.appendChild(row);
+            });
+        }
+
+        function viewVehicleDetail(vehicleId) {
+            const vehicle = vehicleData.find(item => item.IDXe === vehicleId);
+            if (vehicle) {
+                showVehicleModal(vehicle);
+            }
+        }
+
+        function showVehicleModal(vehicle) {
+            const qualified = isVehicleQualified(vehicle);
+            const relatedEmblems = getVehicleEmblems(vehicle);
+
+            const modalContent = `
+     <div class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50" id="vehicleModal">
+         <div class="bg-white rounded-lg p-6 max-w-2xl w-full mx-4 max-h-[90vh] overflow-y-auto">
+             <div class="flex justify-between items-center mb-4">
+                 <h3 class="text-lg font-bold">Chi tiết Phương tiện</h3>
+                 <button onclick="closeModal('vehicleModal')" class="text-gray-500 hover:text-gray-700">
+                     <i class="fas fa-times"></i>
+                 </button>
+             </div>
+             <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                 <div><strong>Biển số xe:</strong> ${vehicle.BienSo || ''}</div>
+                 <div><strong>Loại phương tiện:</strong> ${vehicle.LoaiPhuongTien || ''}</div>
+                 <div><strong>Nhãn hiệu:</strong> ${vehicle.NhanHieu || ''}</div>
+                 <div><strong>Màu sơn:</strong> ${vehicle.MauSon || ''}</div>
+                 <div><strong>Số khung:</strong> ${vehicle.SoKhung || ''}</div>
+                 <div><strong>Số máy:</strong> ${vehicle.SoMay || ''}</div>
+                 <div><strong>Số chỗ:</strong> ${vehicle.SoCho || ''}</div>
+                 <div><strong>Số giường:</strong> ${vehicle.SoGiuong || ''}</div>
+                 <div><strong>Tải trọng:</strong> ${vehicle.TaiTrong || ''}</div>
+                 <div><strong>Năm sản xuất:</strong> ${vehicle.NamSanXuat || ''}</div>
+                 <div><strong>Niên hạn sử dụng:</strong> ${vehicle.NienHan || ''}</div>
+                 <div><strong>Hạn đăng kiểm:</strong> ${formatDate(vehicle[VEHICLE_HANDANGKIEM_FIELD])}</div>
+                 <div><strong>Đăng ký KDVT:</strong> ${vehicle.CoKDVT || ''}</div>
+                 <div><strong>Lắp đặt TBGSHT:</strong> ${vehicle['Lắp đặt TBGSHT'] || ''}</div>
+                 <div><strong>Trạng thái:</strong>
+                     <span class="px-2 py-1 text-xs rounded-full ${qualified ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800'}">
+                         ${qualified ? 'Đủ điều kiện cấp phù hiệu' : 'Không đủ điều kiện cấp phù hiệu'}
+                     </span>
+                 </div>
+             </div>
+             ${!qualified ? `
+                 <div class="mt-4 p-4 bg-red-50 rounded">
+                     <h4 class="font-semibold text-red-800">Lý do không đủ điều kiện:</h4>
+                     <div class="mt-2">${vehicle[VEHICLE_QUALIFY_NOTE_FIELD] || ''}</div>
+                 </div>
+             ` : ''}
+             <div class="mt-4 p-4 bg-blue-50 rounded">
+                 <h4 class="font-semibold text-blue-800">Phù hiệu liên quan (${relatedEmblems.length}):</h4>
+                 ${relatedEmblems.length ? `
+                     <table class="w-full text-sm mt-2">
+                         <thead>
+                             <tr class="text-left">
+                                 <th class="py-1">Số phù hiệu</th>
+                                 <th class="py-1">Loại PH</th>
+                                 <th class="py-1">Ngày hết hạn</th>
+                                 <th class="py-1">Trạng thái</th>
+                             </tr>
+                         </thead>
+                         <tbody>
+                             ${relatedEmblems.map(e => `
+                                 <tr>
+                                     <td class="py-1">${e.SoPhuHieu || ''}</td>
+                                     <td class="py-1">${e.LoaiPH || ''}</td>
+                                     <td class="py-1">${formatDate(e.NgayHetHan)}</td>
+                                     <td class="py-1">${e.TrangThai || ''}</td>
+                                 </tr>
+                             `).join('')}
+                         </tbody>
+                     </table>
+                 ` : `<div class="mt-2 text-gray-500">Xe chưa có phù hiệu nào.</div>`}
+             </div>
+         </div>
+     </div>
+ `;
+            document.body.insertAdjacentHTML('beforeend', modalContent);
+        }
+
         // Áp dụng bộ lọc chi tiết cho International
         function applyInternationalSpecificFilters(data) {
             const companyFilter = document.getElementById('internationalCompanyFilter').value.toLowerCase();
@@ -4857,6 +5395,7 @@
             filteredInternationalData = [...originalInternationalData];
             filteredIntEmblemsData = [...originalIntEmblemsData];
             filteredIntBooksData = [...originalIntBooksData];
+            filteredVehicleData = [...vehicleData];
 
             // Update UI
             updateAllUI();
@@ -4912,6 +5451,23 @@
             document.getElementById('intBookStatusFilter').value = '';
             document.getElementById('intBookTypeFilter').value = '';
             document.getElementById('intBookCapStatusFilter').value = '';
+
+            // Clear vehicle tab filters
+            document.getElementById('vehiclePlateFilter').value = '';
+            document.getElementById('vehicleTypeFilter').value = '';
+            document.getElementById('vehicleNhanHieuFilter').value = '';
+            document.getElementById('vehicleQualifiedFilter').value = '';
+            document.getElementById('vehicleGSHTFilter').value = '';
+            document.getElementById('vehicleSoChoMin').value = '';
+            document.getElementById('vehicleSoChoMax').value = '';
+            document.getElementById('vehicleTaiTrongMin').value = '';
+            document.getElementById('vehicleTaiTrongMax').value = '';
+            document.getElementById('vehicleSoGiuongMin').value = '';
+            document.getElementById('vehicleSoGiuongMax').value = '';
+            document.getElementById('vehicleNamSXMin').value = '';
+            document.getElementById('vehicleNamSXMax').value = '';
+            document.getElementById('vehicleHanDKMin').value = '';
+            document.getElementById('vehicleHanDKMax').value = '';
         }
 
         // Cập nhật toàn bộ UI với dữ liệu đã lọc
@@ -4923,6 +5479,7 @@
             updateIntBooksUI();
             updateBusStationsUI();  // THÊM
             updateRegistrationCentersUI();
+            updateVehiclesUI();
             updateStatisticsData();
         }
 
@@ -6030,6 +6587,9 @@
                     break;
                 case 'bus-stations':                                           // THÊM
                     document.getElementById('busStationFilters').classList.remove('hidden'); // THÊM
+                    break;
+                case 'vehicles':
+                    document.getElementById('vehicleFilters').classList.remove('hidden');
                     break;
                 default:
                     // Ẩn tất cả nếu không phải tab có bộ lọc riêng
@@ -7369,6 +7929,7 @@
             populateIntBookFilters();
             populateUnitTypeFilters(); // THÊM DÒNG NÀY
             populateBusStationFilters(); // THÊM
+            populateVehicleFilters();
         }
 
         function populateUnitTypeFilters() {
@@ -7858,7 +8419,7 @@
                     fetchWithCache('cache_emblems', () => _fetchRaw('PHUHIEUXE', 'Filter(PHUHIEUXE, true)'),
                         d => { originalEmblemsData = d; filteredEmblemsData = [...d]; }),
                     fetchWithCache('cache_vehicle', () => _fetchRaw('Xe', 'Filter(Xe, true)'),
-                        d => { vehicleData = d; }),
+                        d => { vehicleData = d; filteredVehicleData = [...d]; }),
                 ]);
 
                 // BƯỚC 2: Hiển thị UI ngay với data đã có
